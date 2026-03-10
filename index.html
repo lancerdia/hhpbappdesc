@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>呼呼陪伴 - 交友结伴旅游社交平台</title>
+  <link rel="icon" type="image/png" href="app_icon108.png" />
+  <link rel="apple-touch-icon" href="app_icon108.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #22101C;
+      --bg2:      #2d1426;
+      --pink:     #F425AF;
+      --pink-dim: rgba(244,37,175,0.15);
+      --white:    #ffffff;
+      --muted:    rgba(255,255,255,0.55);
+      --border:   rgba(244,37,175,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Noto Sans SC', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── 顶部噪点纹理层 ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── 光晕装饰 ── */
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-1 {
+      width: 600px; height: 600px;
+      background: rgba(244,37,175,0.12);
+      top: -200px; right: -150px;
+    }
+    .glow-2 {
+      width: 400px; height: 400px;
+      background: rgba(244,37,175,0.08);
+      bottom: 100px; left: -100px;
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo img {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+    }
+    .logo-text {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      margin-left: 32px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--pink); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 120px 24px 100px;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: var(--pink-dim);
+      color: var(--pink);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero h1 span { color: var(--pink); }
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-badges {
+      margin-top: 48px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .badge {
+      background: var(--pink-dim);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 999px;
+    }
+
+    /* ── Section ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--pink);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 48px;
+    }
+
+    /* ── Feature Grid ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .feature-card:hover {
+      border-color: var(--pink);
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .contact-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+    .contact-item .label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.06em;
+    }
+    .contact-item .value {
+      font-size: 0.9rem;
+      color: var(--white);
+      word-break: break-all;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-decoration: none;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--pink); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header { padding: 20px 20px; }
+      nav { display: none; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-links a { margin-left: 0; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <img src="app_icon108.png" alt="呼呼陪伴" />
+    <span class="logo-text">呼呼陪伴</span>
+  </div>
+  <nav>
+    <a href="#features">功能介绍</a>
+    <a href="#contact">联系我们</a>
+    <a href="agreement.html">用户协议</a>
+    <a href="privacy.html">隐私政策</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <span class="hero-tag">✈ 交友结伴旅游社交平台</span>
+  <h1>找到你的<span>旅途伙伴</span></h1>
+  <p class="hero-sub">呼呼陪伴帮助旅游爱好者发布旅约、寻找同行旅伴，让每一段旅程都不孤单。</p>
+  <div class="hero-badges">
+    <span class="badge">📍 旅约发布</span>
+    <span class="badge">💬 即时通讯</span>
+    <span class="badge">🎁 虚拟礼物</span>
+    <span class="badge">✅ 真颜认证</span>
+    <span class="badge">🔒 内容安全</span>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- Features -->
+<section id="features">
+  <div class="section-label">核心功能</div>
+  <div class="section-title">为旅途而生的社交体验</div>
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>旅约发布与报名</h3>
+      <p>用户可自主创建一对一旅约活动，设定目的地、时间与说明，其他用户可查看并报名参加。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>一对一即时通讯</h3>
+      <p>支持发送文字、表情、图片、视频、60秒内录音，以及旅约/用户卡片分享，消息记录本地留存。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎁</div>
+      <h3>虚拟礼物互赠</h3>
+      <p>使用平台金币购买虚拟礼物，以自定义消息卡片的形式赠送给其他用户，增进互动温度。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>真颜认证</h3>
+      <p>调用手机前置摄像头录制8秒视频，经人脸识别技术鉴定为真实人脸后完成认证，提升账号可信度。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <h3>消息推送</h3>
+      <p>收到新消息时通过系统推送提醒，用户可对指定会话设置免打扰，掌控属于自己的通知节奏。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h3>内容安全审核</h3>
+      <p>平台对用户上传的图片、视频及聊天内容进行自动审核，保障社区健康安全的使用环境。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👑</div>
+      <h3>会员与金币体系</h3>
+      <p>支持微信支付、支付宝充值金币或购买 VIP / 黑卡 VIP 会员，解锁更多专属权益与功能。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <h3>安全登录</h3>
+      <p>支持微信账号一键登录与手机号验证码登录，满足不同用户的使用习惯。</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-label">联系我们</div>
+  <div class="section-title">有任何问题，随时联系</div>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="label">客服邮箱</div>
+      <div class="value">13466386484@163.com</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">官方网站</div>
+      <div class="value">hhpbappdesc.pupupeiban.com</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">运营主体</div>
+      <!-- 公司全称 -->
+      <div class="value">佛山市永葆初心利他至上投资咨询有限公司</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">ICP 备案</div>
+      <div class="value">粤ICP备2024338299号-1</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 呼呼陪伴 &nbsp;·&nbsp; 保留所有权利</p>
+  <div class="footer-links">
+    <a href="agreement.html">用户服务协议</a>
+    <a href="privacy.html">隐私政策</a>
+  </div>
+</footer>
+
+</body>
+</html>
