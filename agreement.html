@@ -1,121 +1,110 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>用户服务协议 - 呼呼陪伴</title>
-  <link rel="icon" type="image/png" href="app_icon108.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg:    #22101C;
-      --bg2:   #2d1426;
-      --pink:  #F425AF;
-      --white: #ffffff;
-      --muted: rgba(255,255,255,0.55);
-      --border: rgba(244,37,175,0.2);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: 'Noto Sans SC', sans-serif;
-      font-weight: 300;
-      line-height: 1.8;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 48px;
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: var(--white);
-    }
-    .logo img { width: 36px; height: 36px; border-radius: 8px; }
-    .logo span {
-      font-family: 'Noto Serif SC', serif;
-      font-weight: 900; font-size: 1.1rem;
-    }
-    .back-btn {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.875rem; transition: color 0.2s;
-    }
-    .back-btn:hover { color: var(--pink); }
-
-    main {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 60px 24px 100px;
-    }
-    h1 {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 2rem; font-weight: 900;
-      margin-bottom: 12px;
-    }
-    .meta {
-      font-size: 0.85rem; color: var(--muted);
-      margin-bottom: 48px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-    h2 {
-      font-size: 1.1rem; font-weight: 500;
-      color: var(--pink);
-      margin: 36px 0 12px;
-    }
-    p {
-      font-size: 0.925rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.85;
-      margin-bottom: 12px;
-    }
-    @media (max-width: 600px) {
-      header { padding: 20px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>呼呼陪伴服务协议</title>
+    <style>
+        body {
+            background-color: #22101C;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #F425AF;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(244, 37, 175, 0.3);
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .date {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #F425AF;
+            text-decoration: none;
+        }
+        .header-nav {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <a class="logo" href="index.html">
-    <img src="app_icon108.png" alt="呼呼陪伴" />
-    <span>呼呼陪伴</span>
-  </a>
-  <a class="back-btn" href="index.html">← 返回首页</a>
-</header>
+    <div class="header-nav">
+        <a href="index.html">呼呼陪伴</a> | <a href="index.html">← 返回首页</a>
+    </div>
 
-<main>
-  <h1>呼呼陪伴服务协议</h1>
-  <div class="meta">
-    更新日期：2025年12月30日 &nbsp;|&nbsp; 生效日期：2025年12月30日
-  </div>
+    <h1>呼呼陪伴服务协议</h1>
+    <div class="date">更新日期：2025年12月30日 | 生效日期：2025年12月30日</div>
 
-  <h2>1. 服务说明</h2>
-  <p>呼呼陪伴是一款社交旅游应用，为用户提供旅游活动发布、报名、社交互动等服务。用户须年满18周岁方可使用本服务。</p>
+    <h2>1. 服务说明</h2>
+    <p>呼呼陪伴是一款社交旅游应用，为用户提供旅游活动发布、报名、社交互动等服务。本服务包含“真颜认证”功能，该功能基于腾讯云人脸核身技术，用于验证用户身份真实性。用户须年满18周岁方可使用本服务。本平台提供虚拟金币及会员服务购买功能，支持微信支付、支付宝支付等方式。</p>
 
-  <h2>2. 用户注册</h2>
-  <p>用户需要使用真实有效的手机号码进行注册。用户应对其账号和密码的安全性负责，因用户保管不善可能导致的账号被盗，由用户自行承担责任。</p>
+    <h2>2. 用户注册</h2>
+    <p>用户需要使用真实有效的手机号码或微信账号进行注册。用户应对其账号和密码的安全性负责，因用户保管不善可能导致的账号被盗，由用户自行承担责任。若用户进行“真颜认证”，需授权平台采集人脸信息用于身份核验。</p>
 
-  <h2>3. 用户行为规范</h2>
-  <p>用户不得发布违法、虚假、骚扰、侵权的信息；不得利用本平台从事违法违规活动；不得干扰平台正常运营。违反规定的用户，我们有权采取警告、限制功能、暂停服务、终止服务等措施。</p>
+    <h2>3. 用户行为规范</h2>
+    <p>用户不得利用本平台从事以下行为：</p>
+    <ul>
+        <li>发布涉黄、涉赌、涉毒、涉政等违法违规信息；</li>
+        <li>冒充他人身份，或使用虚假照片、视频进行诈骗；</li>
+        <li>在旅游结伴过程中从事传销、推销或其他商业牟利活动；</li>
+        <li>恶意骚扰、侮辱或恐吓其他用户；</li>
+        <li>诱导站外交易（如脱离平台监管进行私下转账），骗取财物。</li>
+    </ul>
+    <p>特别提示：针对违规用户，平台有权采取警告、限制功能、封禁账号、冻结虚拟资产、永久禁止注册等措施。</p>
 
-  <h2>4. 内容版权</h2>
-  <p>用户发布的内容版权归用户所有，但用户授予我们在全球范围内免费、非独家、可转授权的使用权利，用于提供、推广和改善服务。</p>
+    <h2>4. 真颜认证与身份核实</h2>
+    <p>为保障交友环境真实，平台提供“真颜认证”服务。用户在进行认证时，授权平台调用设备摄像头录制视频并上传至腾讯云人脸核身服务进行比对。用户理解并同意：</p>
+    <ol>
+        <li>认证视频仅用于身份核验及真实性标识展示，平台承诺严格保密；</li>
+        <li>用户需确保认证视频为本人实时录制，若存在造假行为，平台有权拒绝认证或封禁账号；</li>
+        <li>认证服务由第三方技术支持，因网络、技术等原因导致认证失败的，平台不承担违约责任。</li>
+    </ol>
 
-  <h2>5. 免责声明</h2>
-  <p>本平台仅提供信息发布和社交服务，不对用户间的线下活动承担责任。用户应自行评估风险，注意人身和财产安全。</p>
+    <h2>5. 虚拟财产与支付服务</h2>
+    <ol>
+        <li>用户可通过微信支付、支付宝支付等方式购买虚拟金币或会员服务。购买成功后，除法律规定情形外，虚拟商品不支持退款。</li>
+        <li>虚拟金币仅限在本平台内消费使用（如购买礼物、增值服务等），不具备法定货币属性，严禁进行账户间的转让或私下交易。</li>
+        <li>用户赠送礼物给其他用户的行为属于自愿消费行为，礼物一经送出，无法撤回或退还。</li>
+    </ol>
 
-  <h2>6. 服务变更与中断</h2>
-  <p>我们保留随时修改或中断服务的权利，无需对用户或第三方承担责任。重大变更时会提前通知用户。</p>
+    <h2>6. 内容版权</h2>
+    <p>用户发布的内容版权归用户所有，但用户授予我们在全球范围内免费、非独家、可转授权的使用权利，用于提供、推广和改善服务。同时，用户授权平台使用腾讯云内容安全服务对发布内容进行审核。</p>
 
-  <h2>7. 协议修改</h2>
-  <p>我们有权根据需要修改本协议。修改后的协议一经公布即生效，继续使用服务视为接受修改后的协议。</p>
-</main>
+    <h2>7. 免责声明</h2>
+    <p>本平台仅提供信息发布和社交服务，不对用户间的线下活动承担责任。鉴于旅游活动具有一定风险性，用户在发起或参与旅约时，应自行评估对方的信用及活动的安全性，注意人身和财产安全。平台提供的“真颜认证”仅代表该用户通过了人脸比对，不代表对其人品、信誉及线下行为的背书。</p>
+
+    <h2>8. 服务变更与中断</h2>
+    <p>我们保留随时修改或中断服务的权利，无需对用户或第三方承担责任。重大变更时会提前通知用户。</p>
+
+    <h2>9. 协议修改</h2>
+    <p>我们有权根据需要修改本协议。修改后的协议一经公布即生效，继续使用服务视为接受修改后的协议。</p>
 
 </body>
 </html>
